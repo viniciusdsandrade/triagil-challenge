@@ -2,7 +2,6 @@ DROP DATABASE IF EXISTS db_triagil_challenge;
 CREATE DATABASE IF NOT EXISTS db_triagil_challenge;
 USE db_triagil_challenge;
 
-
 CREATE TABLE IF NOT EXISTS tb_team
 (
     id    BIGINT UNSIGNED AUTO_INCREMENT,

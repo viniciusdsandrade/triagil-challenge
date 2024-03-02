@@ -32,7 +32,7 @@ public class TeamController {
         return ResponseEntity.ok(teamService.getAllTeams());
     }
 
-    @GetMapping("/{user}")
+    @GetMapping("/name/{user}")
     public ResponseEntity<DadosListagemTeam> getTeamByUserName(@PathVariable("user") String name) {
         Team team = teamService.getTeamByUserName(name);
         return ResponseEntity.ok(new DadosListagemTeam(team.getOwner(), team.getPokemons()));
