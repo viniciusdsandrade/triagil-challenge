@@ -1,5 +1,9 @@
 package com.restful.triagil.challenge.dto.pokemon;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(name = "DadosListagemPokemon",
+        description = "Dados de Listagem de Pokemons")
 public record DadosListagemPokemon(
         Long id,
         String name,

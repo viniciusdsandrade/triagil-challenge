@@ -55,7 +55,7 @@ public class TeamServiceImpl implements TeamService {
 
         Team newTeam = new Team();
         newTeam.setOwner(team.user());
-        newTeam.setPokemons(validPokemons);
+        newTeam.addPokemons(validPokemons);
 
         return teamRepository.save(newTeam);
     }

@@ -2,6 +2,8 @@ package com.restful.triagil.challenge.handler;
 
 import com.restful.triagil.challenge.exception.DuplicateEntryException;
 import com.restful.triagil.challenge.exception.PokemonNotFoundException;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -18,6 +20,8 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    @Operation(summary = "Handle Pokemon Not Found Exception")
+    @ApiResponse(responseCode = "404", description = "Pokemon Not Found")
     @ExceptionHandler(PokemonNotFoundException.class)
     public ResponseEntity<List<ErrorDetails>> handlePokemonNotFoundException(PokemonNotFoundException exception,
                                                                              WebRequest webRequest) {
@@ -31,6 +35,8 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(List.of(errorDetails));
     }
 
+    @Operation(summary = "Handle Method Argument Not Valid Exception")
+    @ApiResponse(responseCode = "400", description = "Method Argument Not Valid")
     @ExceptionHandler(MethodArgumentNotValidException.class)
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex) {
         Map<String, Object> body = new LinkedHashMap<>();
@@ -48,6 +54,8 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
 
+    @Operation(summary = "Handle Duplicate Entry Exception")
+    @ApiResponse(responseCode = "409", description = "Duplicate Entry")
     @ExceptionHandler(DuplicateEntryException.class)
     public ResponseEntity<List<ErrorDetails>> handleDuplicateEntryException(DuplicateEntryException exception,
                                                                             WebRequest webRequest) {
@@ -61,6 +69,8 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(List.of(errorDetails));
     }
 
+    @Operation(summary = "Handle General Exception")
+    @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @ExceptionHandler(Exception.class)
     public ResponseEntity<List<ErrorDetails>> handleException(Exception exception, WebRequest webRequest) {
         ErrorDetails errorDetails = new ErrorDetails(
