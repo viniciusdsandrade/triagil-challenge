@@ -1,4 +1,4 @@
-FROM openjdk:21-jdk-slim AS build
+FROM openjdk:17-jdk-slim AS build
 
 VOLUME /tmp
 
