@@ -13,7 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 @Entity(name = "Team")
 @Table(name = "tb_team",
-        schema = "tb_triagil_challenge",
         uniqueConstraints = {
                 @UniqueConstraint(name = "team_name_unique", columnNames = "owner")
         }

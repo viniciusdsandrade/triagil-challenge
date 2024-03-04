@@ -16,17 +16,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
                         email = "vinicius_andrade2010@hotmail.com",
                         url = "https://www.linkedin.com/in/viniciusdsandrade"
                 )
-        ),
-        servers = {
-                @Server(
-                        url = "http://localhost:8080",
-                        description = "Local server"
-                ),
-                @Server(
-                        url = "https://triagil-challenge.herokuapp.com",
-                        description = "Heroku server"
-                )
-        }
+        )
 )
 public class OpenApiConfig {
 }
